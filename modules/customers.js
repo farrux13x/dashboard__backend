@@ -63,6 +63,20 @@ router.post('/:id', (req, res) => {
     updateCustomer()
 })
 
+router.get('/:id', (req, res) => {
+
+    async function deleteCustomer(id){
+        await Customer.deleteOne({_id: id})
+        
+        res.send({
+            message: 'Done'
+        })
+    }
+
+
+
+    deleteCustomer(req.params.id)
+})
 
 
 const customerSchema = new mongoose.Schema({
